@@ -1,3 +1,19 @@
 <app-header (OnImportAdviceMessage)="showAdviceMessage($event)"></app-header>
 <section class="main">
+  <div class="main__content"></div>
+  <div class="main__sidebar">
+    <div class="weather">
+      <h3 class="weather__title"> Погода </h3>
+      <div class="weather__elem-wrap" *ngFor="let elem of weatherResult; let i = index">
+        <div class="weather__elem" *ngIf="i !== 0">
+          <h3 class="weather__elem-type">{{elem.location.country}}, {{elem.location.name}}</h3>
+          <div class="weather__elem-img">
+            <img [src]="elem.current.condition.icon" alt="weather icon">
+          </div>
+          <p class="weather__elem-type weather__elem-type--no-margin">{{elem.current.condition.text}}</p>
+          <p class="weather__elem-type">{{elem.current.temp_c}} C</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
